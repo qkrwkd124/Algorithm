@@ -4,7 +4,7 @@ def solution(orders, course):
 
     def combine(start:int, path:list) :
         if len(path) == course_num :
-            print(path[:])
+            # print(path[:])
             
             sort_path = sorted(path)
             join_path = ''.join(sort_path)
@@ -36,21 +36,27 @@ def solution(orders, course):
                 continue
             combine(0,[])
 
-    print(result)
-    print(max_cnt)
+    # print(result)
+    # print(max_cnt)
 
     for key in result :
         cnt,course_num = result[key]
+        if cnt < 2 : 
+            continue
 
-        
+        if cnt == max_cnt[course_num] :
+            answer.append(key)
 
+    answer = sorted(answer)
 
     return answer
 
 
 orders = ["ABCFG", "AC", "CDE", "ACDE", "BCFG", "ACDEH"]
-orders = ["XYZ", "XWY", "WXA"]
+orders = ["ABCDE", "AB", "CD", "ADE", "XYZ", "XYZ", "ACD"]
+# orders = ["XYZ", "XWY", "WXA"]
 course = [2,3,4]
-course = [2,3,4]	
+course = [2,3,5]
+# course = [2,3,4]
 
 print(solution(orders,course))

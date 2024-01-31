@@ -19,7 +19,7 @@ def solution(book_time):
 
     # 정렬순서대로 최소힙에 check_out push
     # 최소 check_out 시간 보다 check_in 시간이 나중에 들어오면 pop
-    #  => 최소 check_out 시간이 check_in 보다 작으면 이제 더이상 객실 이용을 안하면 되기때문에 pop 을 함
+    #  => 최소 check_out 시간이 check_in 보다 작으면 이제 더이상 객실 이용을 안하기때문에 pop 을 함
     for time in book_time :
         check_in, check_out = time_to_convert(time)
         if room and room[0] <= check_in :

@@ -48,18 +48,19 @@ def solution(places):
         safe = True
             
         def is_safe(places:list) :
-            visited = [[False]*5 for _ in range(5)]
             dq = deque()
 
             for x,POX in enumerate(place) :
                 for y,val in enumerate(POX) :
                     if val == 'P' :
+                        visited = [[False]*5 for _ in range(5)]
                         dq.append((x,y,0))
                         visited[x][y] = True
                         safe = bfs(dq,place,visited)
 
                         if not safe :
                             return False
+            return True
             # is_safe = bfs(dq,place,visited)
 
             # if is_safe :
@@ -69,11 +70,14 @@ def solution(places):
 
             # break
         safe = is_safe(place)
+        print(safe)
 
         if safe :
             answer.append(1)
         else :
             answer.append(0)
+
+        # break
 
     return answer
 

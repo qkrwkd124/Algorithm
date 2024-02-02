@@ -5,43 +5,35 @@ dy = [1,-1,0,0]
 
 def bfs(dq:deque, place:list, visited:list) :
 
-    # dq = deque((x,y,0))
-    # visited[x][y] = True
-
-    #print(dq)
-
     while dq :
-        print(dq)
+        # print(dq)
         x,y,cnt = dq.popleft()
 
-        if cnt > 1 and place[x][y] == 'P' :
-            return False
-
+        # 이동횟수가 3번 이상이면은 그만
         if cnt > 2 :
             continue
 
-        
+        # 한번 이동하고 사람을 만나면은 안전하지 않다고 판단
+        if cnt > 0 and place[x][y] == 'P' :
+            return False
+
         for i in range(4) :
             nx = x+dx[i]
             ny = y+dy[i]
-            # print(nx,ny)
 
             if nx < 0 or ny < 0 or nx >= 5 or ny >=5 :
                 continue
 
-            # if place[nx][ny] == 'P' :
-            #     print(nx,ny)
-            #     return False
-            
-            if not visited[nx][ny] and place[nx][ny] == 'O' :
-                dq.append((nx,ny,cnt+1))
+            if visited[nx][ny] or place[nx][ny] == 'X' :
+                continue
 
+            dq.append((nx,ny,cnt+1))
+            visited[nx][ny] = True
     
     return True
 
 def solution(places):
     answer = []
-
 
     for place in places :
 
@@ -52,6 +44,8 @@ def solution(places):
 
             for x,POX in enumerate(place) :
                 for y,val in enumerate(POX) :
+                    # 루프를 돌려 사람일 경우 최대 2번의 이동안에 사람을 만날경우 안전하지 않다고 판단하고 return False
+                    # 각 대기실마다 사람마다 작동
                     if val == 'P' :
                         visited = [[False]*5 for _ in range(5)]
                         dq.append((x,y,0))
@@ -60,24 +54,16 @@ def solution(places):
 
                         if not safe :
                             return False
+                        
             return True
-            # is_safe = bfs(dq,place,visited)
-
-            # if is_safe :
-            #     answer.append(1)
-            # else :
-            #     answer.append(0)
-
-            # break
+        
         safe = is_safe(place)
-        print(safe)
+        # print(safe)
 
         if safe :
             answer.append(1)
         else :
             answer.append(0)
-
-        # break
 
     return answer
 

@@ -8,7 +8,7 @@ def time_to_convert(time) :
     ehour, eminute = tuple(map(int,etime.split(':')))
     
     return shour*60 + sminute, ehour*60 + eminute + 10
-	
+    
 def solution(book_time):
     
     # check_in 순서로 정렬

@@ -90,7 +90,7 @@ m = 4
 # m = 6
 n = 5
 # n =6 
-board =	["CCBDE", "AAADE", "AAABF", "CCBBF"]
+board =    ["CCBDE", "AAADE", "AAABF", "CCBBF"]
 # board = ["TTTANT", "RRFACC", "RRRFCC", "TRRRAA", "TTMMMF", "TMMTTJ"]
 
 print(solution(m,n,board))

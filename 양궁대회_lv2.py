@@ -11,9 +11,6 @@ def solution(n, info):
         nonlocal answer
 
         if sum(ryan_info) == n :
-            # print(ryan_info)
-            # if ryan_info == [0,2,2,0,1,0,0,0,0,0,0]:
-                # print(ryan_info)
 
             apeach_score = 0
             ryan_score = 0
@@ -35,18 +32,12 @@ def solution(n, info):
                     answer = copy.deepcopy(ryan_info)
 
                 elif max_gap == score_gap :
-                    # for i in range(10,-1,-1) :
-                    #     if ryan_info[i] > answer[i] :
-                    #         answer = copy.deepcopy(ryan_info)
-                    #         break
-                    for i in range(len(ryan_score)):
-                        if answer[i] > 0:
-                            max_i_1 = i
-                        if ryan_info[i] > 0:
-                            max_i_2 = i
-                    if max_i_2 > max_i_1:
-                        answer = copy.deepcopy(ryan_info)
-                            
+                    for i in range(10,-1,-1) :
+                        if ryan_info[i] > answer[i] :
+                            answer = copy.deepcopy(ryan_info)
+                            break
+                        elif ryan_info[i] < answer[i] :
+                            break
             
             return
         
@@ -56,7 +47,7 @@ def solution(n, info):
                 if info[i] >= ryan_info[i] :
                     ryan_info[i] += 1
                     product(i,ryan_info)
-                    ryan_info[i] -= 1
+                    ryan_info[i] = 0
 
     product(0,[0,0,0,0,0,0,0,0,0,0,0])
 

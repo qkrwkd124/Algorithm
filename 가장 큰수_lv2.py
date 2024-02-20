@@ -2,7 +2,7 @@ def solution(numbers):
     answer = ''
 
 
-    sort_numbers = sorted(numbers, key=lambda x : str(x))
+    sort_numbers = sorted(numbers, key=lambda a,b : )
     print(sort_numbers)
 
     ss = '7'*3

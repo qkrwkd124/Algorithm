@@ -35,7 +35,7 @@ def solution(n, computers):
         print(parent)
 
     
-    # union-find 할 경우 모든 수가 최상위 부모를 가리키지 않을때가 있어서, 한번 find를 해줌으로써 최상위 부모를 가리키게 만든다.
+    # union-find 할 경우 일부 노드가 최종 루트가 아닌 다른 노드를 가리키는 경우가 있어서, 한번 find를 해줌으로써 최상위 부모를 가리키게 만든다.
     for i in range(n):
         find(parent, i)
 

@@ -11,6 +11,8 @@ def union(parent:list, a:int, b:int) :
     root_a = find(parent,a)
     root_b = find(parent,b)
 
+    print(f"{a} : {b} > {root_a} : {root_b}")
+
     if root_a < root_b :
         parent[root_b] = root_a
     else :
@@ -33,10 +35,9 @@ def solution(n, computers):
         print(parent)
 
     
-    # print(Counter(parent).values())
-
-    # for i in range(n):
-    #     find(parent, i)
+    # union-find 할 경우 모든 수가 최상위 부모를 가리키지 않을때가 있어서, 한번 find를 해줌으로써 최상위 부모를 가리키게 만든다.
+    for i in range(n):
+        find(parent, i)
 
     # print(parent)
     
@@ -52,7 +53,7 @@ computers = [[1, 1, 0], [1, 1, 0], [0, 0, 1]]
 # computers = [[1, 1, 0], [1, 1, 1], [0, 1, 1]]
 computers = [[1, 1, 1, 0, 0], [1, 1, 1, 0, 0], [1, 1, 1, 0, 0],[0, 0, 0, 1, 1], [0,0,0,1,1]]
 
-#예외상황..
+#예외상황.. 모든 수가 최상위 부모를 가리키지 않을때.
 n = 5
 computers= [[1, 0, 0, 0, 1], [0, 1, 1, 0, 0], [0, 1, 1, 1, 0], [0, 0, 1, 1, 1], [1, 0, 0, 1, 1]]
 

@@ -1,25 +1,35 @@
-from itertools import combinations
+from collections import deque
 
 def solution(gems):
     answer = []
 
-    # print(len(combinations(gems,4)))
+    gem_length = len(set(gems))
 
-    gemss = gems * 10000
-    print(len(gemss))
+    start = 0
 
-    cnt = 0
+    dq = deque()
 
-    for result in combinations(gemss,4) :
-        cnt+=1
-        # print(result)
+    for gem in gems :
+        dq.append(gem)
 
-    print(cnt)
+        # print(dq)
 
+        while dq[0] in list(dq)[1:] :
+            dq.popleft()
+            start +=1
+
+        if len(set(dq)) == gem_length :
+            answer.append(start+1)
+            answer.append(start+len(dq))
+            break
+        
 
     return answer
 
 
 gems = ["DIA", "RUBY", "RUBY", "DIA", "DIA", "EMERALD", "SAPPHIRE", "DIA"]
+gems = ["AA", "AB", "AC", "AA", "AC"]
+gems = ["XYZ", "XYZ", "XYZ"]
+gems = ["ZZZ", "YYY", "NNNN", "YYY", "BBB"]
 
 print(solution(gems))
